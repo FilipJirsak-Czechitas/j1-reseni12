@@ -1,20 +1,9 @@
 plugins {
-    id 'application'
     id 'org.beryx.runtime' version '1.12.7'
 }
 
 group = 'cz.czechitas'
-version = '1.0'
-
-java {
-    toolchain {
-        languageVersion = JavaLanguageVersion.of(17)
-    }
-}
-
-tasks.withType(JavaCompile) {
-    options.encoding = "UTF-8"
-}
+version = '1.0-SNAPSHOT'
 
 repositories {
     mavenCentral()
@@ -29,15 +18,21 @@ test {
     useJUnitPlatform()
 }
 
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21)
+    }
+}
+
 application {
-    mainClass = "cz.czechitas.lekce12.Application"
+    mainClass = "cz.czechitas.lekce12.Main"
+    applicationName = 'hello-world'
 }
 
 runtime {
+    imageZip = layout.buildDirectory.file("hello-world.zip")
     jpackage {
-        imageName = "Moje aplikace ${project.version}"
-        jpackage {
-            imageOptions = ["--icon", "src/main/resources/czechitas.icns"]
-        }
+        imageName = "hello-world-${project.version}"
     }
 }
+
