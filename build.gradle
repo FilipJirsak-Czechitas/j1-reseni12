@@ -1,9 +1,9 @@
 plugins {
-    id 'org.beryx.runtime' version '1.12.7'
+    id 'com.dua3.gradle.runtime' version '1.13.1-patch-1'
 }
 
 group = 'cz.czechitas'
-version = '1.0-SNAPSHOT'
+version = '1.0'
 
 repositories {
     mavenCentral()
